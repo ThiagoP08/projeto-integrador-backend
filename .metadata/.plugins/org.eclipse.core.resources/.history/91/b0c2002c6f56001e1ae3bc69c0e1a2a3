@@ -1,0 +1,58 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class EventDAO {
+    private static final String SELECT_ALL_EVENTS = "SELECT * FROM evento";
+    private static final String INSERT_EVENT = "INSERT INTO evento (titulo, descricao, img_src, tipo, min_lotacao, max_lotacao, status_, min_idade, data_evento) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    public List<Event> getAllEvents() {
+        List<Event> events = new ArrayList<>();
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_EVENTS);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            while (resultSet.next()) {
+                Event event = new Event();
+                event.setId(resultSet.getInt("id"));
+                event.setTitulo(resultSet.getString("titulo"));
+                // Preencha os outros campos do objeto Event aqui
+                events.add(event);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return events;
+    }
+
+    public boolean insertEvent(Event event) {
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_EVENT)) {
+
+            preparedStatement.setString(1, event.getTitulo());
+            preparedStatement.setString(2, event.getDescricao());
+            preparedStatement.setString(3, event.getImgSrc());
+            preparedStatement.setInt(4, event.getTipo());
+            preparedStatement.setInt(5, event.getMinLotacao());
+            preparedStatement.setInt(6, event.getMaxLotacao());
+            preparedStatement.setBoolean(7, event.isStatus());
+            preparedStatement.setInt(8, event.getMinIdade());
+            preparedStatement.setDate(9, event.getDataEvento());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+}
+

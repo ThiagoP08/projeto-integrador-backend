@@ -1,0 +1,154 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+//import model.Tarefa;
+
+public class EventoDAO {
+	
+	public Evento consultarPorId(int id) {
+	    Evento tarefa = null;
+	    String SQL = "SELECT * FROM evento WHERE id = ?";
+	    Connection cnx = Dao.getConexao();
+
+	    try {
+	        PreparedStatement ps = cnx.prepareStatement(SQL);
+	        ps.setInt(1, id);
+	        ResultSet rs = ps.executeQuery();
+
+	        if (rs.next()) {
+	            evento = new Evento();
+	            evento.setId(rs.getInt("id"));
+	            evento.setTitulo(rs.getString("titulo"));
+	            evento.setDescricao(rs.getString("descricao"));
+	            evento.setImg_src(rs.getString("img_src"));
+	            evento.setTipo(rs.getInt("tipo"));
+	            evento.setMin_lotacao(rs.getInt("min_lotacao"));
+	            evento.setMax_lotacao(rs.getInt("max_lotacao"));
+	            evento.setStatus_(rs.getBoolean("status"));
+	            evento.setMin_idade(rs.getInt("min_idade"));
+	            evento.setData_evento(rs.getDate("data_evento"));
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        Dao.setFecharConexao();
+	    }
+
+	    return evento;
+	}
+
+	
+	public boolean incluir(Evento event) {
+		boolean resultado = true;
+		
+		Connection cnx = Dao.getConexao();
+		
+		String SQL = "INSERT INTO evento(descricao, status) VALUES(?, ?)";
+		
+		PreparedStatement ps;
+		
+		try {
+			ps = cnx.prepareStatement(SQL);
+			
+			ps.setString(1, evento.getDescricao());
+			ps.setBoolean(2, evento.getStatus());
+			
+			int i = ps.executeUpdate();
+			
+			resultado = i > 0 ? true : false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultado;
+	}
+	
+	public boolean editar(Evento evento) {
+	    boolean resultado = false;
+
+	    Connection cnx = Dao.getConexao();
+
+	    String SQL = "UPDATE evento SET descricao = ?, status = ? WHERE id = ?";
+
+	    PreparedStatement ps;
+
+	    try {
+	        ps = cnx.prepareStatement(SQL);
+
+	        ps.setString(1, evento.getDescricao());
+	        ps.setBoolean(2, evento.getStatus());
+	        ps.setInt(3, evento.getId());
+
+	        int i = ps.executeUpdate();
+
+	        resultado = i > 0;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return resultado;
+	}
+	
+	public boolean excluir(Integer id) {
+	    boolean resultado = false;
+
+	    Connection cnx = Dao.getConexao();
+
+	    String SQL = "DELETE FROM evento WHERE id = ?";
+
+	    PreparedStatement ps;
+
+	    try {
+	        ps = cnx.prepareStatement(SQL);
+
+	        ps.setInt(1, id);
+
+	        int i = ps.executeUpdate();
+
+	        resultado = i > 0 ? true : false; //IF Terciario
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return resultado;
+	}
+	
+	public List<Evento> listar() {
+		List<Evento> listaDeTarefas = new ArrayList<Evento>();
+		Evento evento;
+				
+		String SQL = "SELECT * FROM evento";
+		
+		Connection cnx = Dao.getConexao();
+		
+		PreparedStatement ps;
+		
+		try {
+			ps = cnx.prepareStatement(SQL);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				evento = new Evento();
+				
+				evento.setId(rs.getInt("id"));
+				evento.setDescricao(rs.getString("descricao"));
+				evento.setStatus(rs.getBoolean("status"));
+				
+				listaDeTarefas.add(evento);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Dao.setFecharConexao();
+			return listaDeTarefas;
+		}
+	}
+}

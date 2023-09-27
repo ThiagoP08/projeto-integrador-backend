@@ -1,0 +1,147 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+//import model.Tarefa;
+
+public class EventDAO {
+	
+	public Evento consultarPorId(int id) {
+	    Evento tarefa = null;
+	    String SQL = "SELECT * FROM evento WHERE id = ?";
+	    Connection cnx = Dao.getConexao();
+
+	    try {
+	        PreparedStatement ps = cnx.prepareStatement(SQL);
+	        ps.setInt(1, id);
+	        ResultSet rs = ps.executeQuery();
+
+	        if (rs.next()) {
+	            tarefa = new Event();
+	            tarefa.setId(rs.getInt("id"));
+	            tarefa.setDescricao(rs.getString("descricao"));
+	            tarefa.setStatus(rs.getBoolean("status"));
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        Dao.setFecharConexao();
+	    }
+
+	    return event;
+	}
+
+	
+	public boolean incluir(Event event) {
+		boolean resultado = true;
+		
+		Connection cnx = Dao.getConexao();
+		
+		String SQL = "INSERT INTO tarefas(descricao, status) VALUES(?, ?)";
+		
+		PreparedStatement ps;
+		
+		try {
+			ps = cnx.prepareStatement(SQL);
+			
+			ps.setString(1, event.getDescricao());
+			ps.setBoolean(2, event.getStatus());
+			
+			int i = ps.executeUpdate();
+			
+			resultado = i > 0 ? true : false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return resultado;
+	}
+	
+	public boolean editar(Event event) {
+	    boolean resultado = false;
+
+	    Connection cnx = Dao.getConexao();
+
+	    String SQL = "UPDATE tarefas SET descricao = ?, status = ? WHERE id = ?";
+
+	    PreparedStatement ps;
+
+	    try {
+	        ps = cnx.prepareStatement(SQL);
+
+	        ps.setString(1, event.getDescricao());
+	        ps.setBoolean(2, event.getStatus());
+	        ps.setInt(3, event.getId());
+
+	        int i = ps.executeUpdate();
+
+	        resultado = i > 0;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return resultado;
+	}
+	
+	public boolean excluir(Integer id) {
+	    boolean resultado = false;
+
+	    Connection cnx = Dao.getConexao();
+
+	    String SQL = "DELETE FROM tarefas WHERE id = ?";
+
+	    PreparedStatement ps;
+
+	    try {
+	        ps = cnx.prepareStatement(SQL);
+
+	        ps.setInt(1, id);
+
+	        int i = ps.executeUpdate();
+
+	        resultado = i > 0 ? true : false; //IF Terciario
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return resultado;
+	}
+	
+	public List<Event> listar() {
+		List<Event> listaDeTarefas = new ArrayList<Event>();
+		Event event;
+				
+		String SQL = "SELECT * FROM tarefas";
+		
+		Connection cnx = Dao.getConexao();
+		
+		PreparedStatement ps;
+		
+		try {
+			ps = cnx.prepareStatement(SQL);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				event = new Event();
+				
+				event.setId(rs.getInt("id"));
+				event.setDescricao(rs.getString("descricao"));
+				event.setStatus(rs.getBoolean("status"));
+				
+				listaDeTarefas.add(event);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Dao.setFecharConexao();
+			return listaDeTarefas;
+		}
+	}
+}
