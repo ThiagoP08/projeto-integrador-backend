@@ -4,6 +4,11 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
+import mercadoPago.IdentificationRequest;
+import mercadoPago.PaymentClient;
+import mercadoPago.PaymentCreateRequest;
+import mercadoPago.PaymentPayerRequest;
+
 public class PagamentoPix {
 
 	MercadoPagoConfig.setAccessToken("TEST-4948667905090839-092613-d778e3242a77f14135b55f2bedf93a9c-1486479689");
