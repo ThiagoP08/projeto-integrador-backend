@@ -27,5 +27,4 @@ public class PagamentoPix {
 
 	client.create(paymentCreateRequest);
 
-	
 }
