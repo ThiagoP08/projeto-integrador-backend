@@ -34,15 +34,4 @@
 		<session-timeout>30</session-timeout>
 	</session-config>
 
-	<servlet>
-		<servlet-name>PaymentServlet</servlet-name>
-		<servlet-class>com.seu.pacote.PaymentServlet</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>PaymentServlet</servlet-name>
-		<url-pattern>/process_payment</url-pattern>
-	</servlet-mapping>
-
-
 </web-app>
