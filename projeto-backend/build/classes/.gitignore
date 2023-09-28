@@ -1,8 +1,8 @@
+/mercadoPago/
+/org/
+/lombok/
 /api/
 /dao/
 /model/
-/resource/
 /service/
-/check/
-/hash/
-/mercadoPago/
+/resource/
