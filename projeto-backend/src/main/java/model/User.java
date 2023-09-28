@@ -8,6 +8,7 @@ public class User {
 	private String dtNascimento;
 	private String cpf;
 	private String endereco;
+	private String cep;
 	private Boolean status_admin;
 	
 	public Integer getId() {
@@ -64,6 +65,14 @@ public class User {
 	
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+	
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 	
 	public Boolean getStatus_admin() {

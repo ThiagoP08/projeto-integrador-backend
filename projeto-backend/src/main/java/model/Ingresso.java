@@ -3,7 +3,9 @@ package model;
 public class Ingresso {
     private Integer id;
     private Integer valor;
+    private Integer quantidade;
     private String descricao;
+    private String qrcode;
     private Integer user_id;
     private Integer evento_id;
 
@@ -36,6 +38,14 @@ public class Ingresso {
     public void setValor(Integer valor) {
         this.valor = valor;
     }
+    
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
 
     public String getDescricao() {
         return descricao;
@@ -44,6 +54,14 @@ public class Ingresso {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+    
+	public String getQrcode() {
+		return qrcode;
+	}
+
+	public void setQrcode(String qrcode) {
+		this.qrcode = qrcode;
+	}
 
     public Integer getUser_id() {
         return user_id;

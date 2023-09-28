@@ -27,9 +27,8 @@ public class AdminDAO {
 			
 			while(rs.next()) {
 				admin.setId(rs.getInt("id"));
-				admin.setCnpj(rs.getString("cnpj"));
+				admin.setUser_id(rs.getInt("user_id"));
 				admin.setStatus(rs.getBoolean("status"));
-				admin.setEvento_id(rs.getInt("evento_id"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -44,16 +43,15 @@ public class AdminDAO {
 
 		Connection cnx = Dao.getConexao();
 
-		String SQL = "INSERT INTO admin(cnpj, status, evento_id) VALUES(?, ?, ?)";
+		String SQL = "INSERT INTO admin(status, user_id) VALUES(?, ?, ?)";
 
 		PreparedStatement ps;
 
 		try {
 			ps = cnx.prepareStatement(SQL);
 
-			ps.setString(1, admin.getCnpj());
-			ps.setBoolean(2, admin.getStatus());
-			ps.setInt(3, admin.getEvento_id());
+			ps.setBoolean(1, admin.getStatus());
+			ps.setInt(2, admin.getUser_id());
 
 			int i = ps.executeUpdate();
 
@@ -70,17 +68,15 @@ public class AdminDAO {
 
 		Connection cnx = Dao.getConexao();
 
-		String SQL = "UPDATE admin SET cnpj = ?, status = ?, evento_id = ? WHERE id = ?";
+		String SQL = "UPDATE admin SET status = ?, user_id = ? WHERE id = ?";
 
 		PreparedStatement ps;
 
 		try {
 			ps = cnx.prepareStatement(SQL);
 
-			ps.setString(1, admin.getCnpj());
-			ps.setBoolean(2, admin.getStatus());
-			ps.setInt(3, admin.getEvento_id());
-			ps.setInt(4, admin.getId());
+			ps.setBoolean(1, admin.getStatus());
+			ps.setInt(2, admin.getUser_id());
 
 			int i = ps.executeUpdate();
 
@@ -134,9 +130,8 @@ public class AdminDAO {
 			while (rs.next()) {
 				admin = new Admin();
 				admin.setId(rs.getInt("id"));
-				admin.setCnpj(rs.getString("cnpj"));
 				admin.setStatus(rs.getBoolean("status"));
-				admin.setEvento_id(rs.getInt("evento_id"));
+				admin.setUser_id(rs.getInt("user_id"));
 
 				listarAdmin.add(admin);
 

@@ -19,7 +19,7 @@
 			if(check.checkLogin(email, senha)) {
 				out.print("Logou");
 			} else {
-				out.print(senha);
+				out.print("Email ou Senha incorretos.");
 			}
 			
 		} catch(Exception e) {

@@ -89,6 +89,7 @@ public class AdminResource {
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("admins")
 	public Response setAlterarAdmin(Admin admin) {
 		AdminService service = new AdminService();
 		boolean retorno = service.alterarAdmin(admin);

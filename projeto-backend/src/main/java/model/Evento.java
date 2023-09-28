@@ -2,15 +2,22 @@ package model;
 
 public class Evento {
 	private Integer id;
-	private String titulo;
-	private String descricao;
 	private String img_src;
+	private String titulo;
+	private String data_evento;
+	private String hora;
+	private String bairro;
+	private String estado;
+	private String rua;
+	private String descricao;
+	private String politica;
 	private Integer tipo;
 	private Integer min_lotacao;
 	private Integer max_lotacao;
 	private Boolean status;
 	private Integer min_idade;
-	private String data_evento;
+	private Integer categoria_id;
+	private Integer admin_id;
 	
 	public Integer getId() {
 		return id;
@@ -18,6 +25,14 @@ public class Evento {
 	
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String getImg_src() {
+		return img_src;
+	}
+	
+	public void setImg_src(String img_src) {
+		this.img_src = img_src;
 	}
 	
 	public String getTitulo() {
@@ -28,6 +43,46 @@ public class Evento {
 		this.titulo = titulo;
 	}
 	
+	public String getData_evento() {
+		return data_evento;
+	}
+
+	public void setData_evento(String data_evento) {
+		this.data_evento = data_evento;
+	}
+	
+	public String getHora() {
+		return hora;
+	}
+
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+	
 	public String getDescricao() {
 		return descricao;
 	}
@@ -36,12 +91,12 @@ public class Evento {
 		this.descricao = descricao;
 	}
 	
-	public String getImg_src() {
-		return img_src;
+	public String getPolitica() {
+		return politica;
 	}
-	
-	public void setImg_src(String img_src) {
-		this.img_src = img_src;
+
+	public void setPolitica(String politica) {
+		this.politica = politica;
 	}
 	
 	public Integer getTipo() {
@@ -84,12 +139,20 @@ public class Evento {
 		this.min_idade = min_idade;
 	}
 
-	public String getData_evento() {
-		return data_evento;
+	public Integer getCategoria_id() {
+		return categoria_id;
 	}
 
-	public void setData_evento(String data_evento) {
-		this.data_evento = data_evento;
+	public void setCategoria_id(Integer categoria_id) {
+		this.categoria_id = categoria_id;
+	}
+
+	public Integer getAdmin_id() {
+		return admin_id;
+	}
+
+	public void setAdmin_id(Integer admin_id) {
+		this.admin_id = admin_id;
 	}
 
 }

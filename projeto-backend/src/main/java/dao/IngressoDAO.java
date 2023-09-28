@@ -27,7 +27,10 @@ public class IngressoDAO {
 			
 			while(rs.next()) {
 				ingresso.setId(rs.getInt("id"));
+				ingresso.setValor(rs.getInt("valor"));
+				ingresso.setQuantidade(rs.getInt("quantidade"));
 				ingresso.setDescricao(rs.getString("descricao"));
+				ingresso.setQrcode(rs.getString("qrcode"));
 				ingresso.setUser_id(rs.getInt("user_id"));
 				ingresso.setEvento_id(rs.getInt("evento_id"));
 			}
@@ -44,7 +47,7 @@ public class IngressoDAO {
 
 		Connection cnx = Dao.getConexao();
 
-		String SQL = "INSERT INTO ingresso(valor, descricao, user_id, evento_id) VALUES(?, ?, ?, ?)";
+		String SQL = "INSERT INTO ingresso(valor, quantidade, descricao, qrcode, user_id, evento_id) VALUES(?, ?, ?, ?, ?, ?)";
 
 		PreparedStatement ps;
 
@@ -52,9 +55,11 @@ public class IngressoDAO {
 			ps = cnx.prepareStatement(SQL);
 
 			ps.setInt(1, ingresso.getValor());
-			ps.setString(2, ingresso.getDescricao());
-			ps.setInt(3, ingresso.getUser_id());
-			ps.setInt(4, ingresso.getEvento_id());
+			ps.setInt(2, ingresso.getQuantidade());
+			ps.setString(3, ingresso.getDescricao());
+			ps.setString(4, ingresso.getQrcode());
+			ps.setInt(5, ingresso.getUser_id());
+			ps.setInt(6, ingresso.getEvento_id());
 
 			int i = ps.executeUpdate();
 
@@ -94,7 +99,7 @@ public class IngressoDAO {
 		List<Ingresso> listaringresso = new ArrayList<Ingresso>();
 		Ingresso ingresso;
 
-		String SQL = "SELECT * FROM admin";
+		String SQL = "SELECT * FROM ingresso";
 
 		Connection cnx = Dao.getConexao();
 
@@ -108,7 +113,11 @@ public class IngressoDAO {
 			while (rs.next()) {
 				ingresso = new Ingresso();
 				ingresso.setId(rs.getInt("id"));
-				
+				ingresso.setValor(rs.getInt("valor"));
+				ingresso.setQuantidade(rs.getInt("quantidade"));
+				ingresso.setDescricao(rs.getString("descricao"));
+				ingresso.setQrcode(rs.getString("qrcode"));
+				ingresso.setUser_id(rs.getInt("user_id"));
 				ingresso.setEvento_id(rs.getInt("evento_id"));
 
 				listaringresso.add(ingresso);
