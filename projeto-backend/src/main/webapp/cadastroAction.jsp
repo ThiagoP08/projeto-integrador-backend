@@ -24,6 +24,13 @@
 			
 			String senha = request.getParameter("senha");
 			user.setSenha(hash.HashSenha(senha));
+			String confirmarSenha = request.getParameter("confirmarSenha");
+			
+			if(!senha.equals(confirmarSenha)){
+				out.print("As senhas não coincidem");
+			} else {
+				user.setSenha(hash.HashSenha(senha));
+			}
 			
 			user.setDtNascimento(request.getParameter("dtNascimento"));
 			user.setCpf(request.getParameter("cpf"));

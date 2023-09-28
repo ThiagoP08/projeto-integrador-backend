@@ -23,6 +23,10 @@
 			<input type="text" name="senha" placeholder="Senha" />
 		</div><br/>
 		<div>
+			<label> Confirmar Senha </label>
+			<input type="text" name="confirmarSenha" placeholder="Confirmar Senha" />
+		</div><br/>
+		<div>
 			<label> Data de Nascimento </label>
 			<input type="date" name="dtNascimento" />
 		</div><br/>
