@@ -35,7 +35,6 @@
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Rua </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Descrição </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Política </th>");
-		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Tipo </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Min. Lot. </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Max. Lot. </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Status </th>");
@@ -55,7 +54,6 @@
 			out.println("<td>" + evento.getRua() + "</td>");
 			out.println("<td>" + evento.getDescricao() + "</td>");
 			out.println("<td>" + evento.getPolitica() + "</td>");
-			out.println("<td>" + evento.getTipo() + "</td>");
 			out.println("<td>" + evento.getMin_lotacao() + "</td>");
 			out.println("<td>" + evento.getMax_lotacao() + "</td>");
 			out.println("<td>" + evento.getStatus() + "</td>");

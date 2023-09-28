@@ -11,7 +11,6 @@ public class Evento {
 	private String rua;
 	private String descricao;
 	private String politica;
-	private Integer tipo;
 	private Integer min_lotacao;
 	private Integer max_lotacao;
 	private Boolean status;
@@ -97,14 +96,6 @@ public class Evento {
 
 	public void setPolitica(String politica) {
 		this.politica = politica;
-	}
-	
-	public Integer getTipo() {
-		return tipo;
-	}
-	
-	public void setTipo(Integer tipo) {
-		this.tipo = tipo;
 	}
 	
 	public Integer getMin_lotacao() {

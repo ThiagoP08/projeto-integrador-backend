@@ -9,7 +9,7 @@ import java.util.List;
 
 import model.Evento;
 
-//import model.Tarefa;
+
 
 public class EventoDAO {
 	
@@ -40,13 +40,11 @@ public class EventoDAO {
 	            evento.setRua(rs.getString("rua"));
 	            evento.setDescricao(rs.getString("descricao"));
 	            evento.setPolitica(rs.getString("politica"));
-	            evento.setTipo(rs.getInt("tipo"));
 	            evento.setMin_lotacao(rs.getInt("min_lotacao"));
 	            evento.setMax_lotacao(rs.getInt("max_lotacao"));
 	            evento.setStatus(rs.getBoolean("status"));
 	            evento.setMin_idade(rs.getInt("min_idade"));
 	            evento.setCategoria_id(rs.getInt("categoria_id"));
-	            evento.setAdmin_id(rs.getInt("admin_id"));
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
@@ -61,7 +59,7 @@ public class EventoDAO {
 		
 		Connection cnx = Dao.getConexao();
 		
-		String SQL = "INSERT INTO evento(img_src, titulo, data_evento, hora, bairro, estado, rua, descricao, politica, tipo, min_lotacao, max_lotacao, status, min_idade, categoria_id, admin_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO evento(img_src, titulo, data_evento, hora, bairro, estado, rua, descricao, politica, min_lotacao, max_lotacao, status, min_idade, categoria_id, admin_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		PreparedStatement ps;
 		
@@ -70,20 +68,18 @@ public class EventoDAO {
 			
 			ps.setString(1, evento.getImg_src());
 			ps.setString(2, evento.getTitulo());
-			ps.setString(7, evento.getData_evento());
-			ps.setString(3, evento.getHora());
-			ps.setString(4, evento.getBairro());
-			ps.setString(5, evento.getEstado());
-			ps.setString(6, evento.getRua());
+			ps.setString(3, evento.getData_evento());
+			ps.setString(4, evento.getHora());
+			ps.setString(5, evento.getBairro());
+			ps.setString(6, evento.getEstado());
+			ps.setString(7, evento.getRua());
 			ps.setString(8, evento.getDescricao());
 			ps.setString(9, evento.getPolitica());
-			ps.setInt(10, evento.getTipo());
-			ps.setInt(11, evento.getMin_lotacao());
-			ps.setInt(12, evento.getMax_lotacao());
-			ps.setBoolean(13, evento.getStatus());
-			ps.setInt(14, evento.getMin_idade());
+			ps.setInt(10, evento.getMin_lotacao());
+			ps.setInt(11, evento.getMax_lotacao());
+			ps.setBoolean(12, evento.getStatus());
+			ps.setInt(13, evento.getMin_idade());
 			ps.setInt(14, evento.getCategoria_id());
-			ps.setInt(14, evento.getAdmin_id());
 			
 			int i = ps.executeUpdate();
 			
@@ -100,7 +96,7 @@ public class EventoDAO {
 
 	    Connection cnx = Dao.getConexao();
 
-	    String SQL = "UPDATE evento SET img_src = ?, titulo = ?, data_evento = ?, hora = ?, bairro = ?, estado = ?, rua = ?, descricao = ?, politica = ?, tipo = ?, min_lotacao = ?, max_lotacao = ?, status = ?, min_idade = ?, categoria_id = ?, admin_id = ? WHERE id = ?";
+	    String SQL = "UPDATE evento SET img_src = ?, titulo = ?, data_evento = ?, hora = ?, bairro = ?, estado = ?, rua = ?, descricao = ?, politica = ?, min_lotacao = ?, max_lotacao = ?, status = ?, min_idade = ?, categoria_id = ?, admin_id = ? WHERE id = ?";
 
 	    PreparedStatement ps;
 
@@ -116,13 +112,11 @@ public class EventoDAO {
 			ps.setString(7, evento.getRua());
 			ps.setString(8, evento.getDescricao());
 			ps.setString(9, evento.getPolitica());
-			ps.setInt(10, evento.getTipo());
-			ps.setInt(11, evento.getMin_lotacao());
-			ps.setInt(12, evento.getMax_lotacao());
-			ps.setBoolean(13, evento.getStatus());
-			ps.setInt(14, evento.getMin_idade());
-			ps.setInt(15, evento.getCategoria_id());
-			ps.setInt(16, evento.getAdmin_id());
+			ps.setInt(10, evento.getMin_lotacao());
+			ps.setInt(11, evento.getMax_lotacao());
+			ps.setBoolean(12, evento.getStatus());
+			ps.setInt(13, evento.getMin_idade());
+			ps.setInt(14, evento.getCategoria_id());
 
 	        int i = ps.executeUpdate();
 
@@ -180,18 +174,16 @@ public class EventoDAO {
 		        evento.setTitulo(rs.getString("titulo"));
 		        evento.setData_evento(rs.getString("data_evento"));
 		        evento.setHora(rs.getString("hora"));
-		        evento.setEstado(rs.getString("estado"));
 		        evento.setBairro(rs.getString("bairro"));
+		        evento.setEstado(rs.getString("estado"));
 		        evento.setRua(rs.getString("rua"));
 		        evento.setDescricao(rs.getString("descricao"));
 		        evento.setPolitica(rs.getString("politica"));
-		        evento.setTipo(rs.getInt("tipo"));
 		        evento.setMin_lotacao(rs.getInt("min_lotacao"));
 		        evento.setMax_lotacao(rs.getInt("max_lotacao"));
 		        evento.setStatus(rs.getBoolean("status"));
 		        evento.setMin_idade(rs.getInt("min_idade"));
 		        evento.setCategoria_id(rs.getInt("categoria_id"));
-		        evento.setAdmin_id(rs.getInt("admin_id"));
 				
 				listarEventos.add(evento);
 				
