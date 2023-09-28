@@ -24,7 +24,7 @@ public class CategoriaResource {
 	@Path("listar")
 	public Response getCategorias() {
 		CategoriaService service = new CategoriaService();
-		List<Categoria> lista = service.listarCategorias();
+		List<Categoria> lista = service.listarCategoria();
 		
 		Response response = Response.ok().entity(lista).build();
 		
@@ -35,7 +35,7 @@ public class CategoriaResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("categorias/{id}")
-	public Response getAdminsPorId(@PathParam("id") Integer id) {
+	public Response getCategoriasPorId(@PathParam("id") Integer id) {
 		CategoriaService service = new CategoriaService();
 		Categoria categoria = service.buscarCategoriaPorId(id);
 		
@@ -56,7 +56,7 @@ public class CategoriaResource {
 	@Path("categorias/{id}")
 	public Response setDeletarCategorias(@PathParam("id") Integer id) {
 		CategoriaService service = new CategoriaService();
-		boolean retorno = service.excluirAdmin(id);
+		boolean retorno = service.excluirCategoria(id);
 		
 		Response response = null;
 		
@@ -92,7 +92,7 @@ public class CategoriaResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response setAlterarCategoria(Categoria categoria) {
 		CategoriaService service = new CategoriaService();
-		boolean retorno = service.alterarAdmin(categoria);
+		boolean retorno = service.alterarCategoria(categoria);
 		
 		Response response = null;
 		
