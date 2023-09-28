@@ -23,7 +23,7 @@
 			user.setNome(request.getParameter("nome"));
 			
 			String senha = request.getParameter("senha");
-			user.setSenha(hash.HashSenha(senha));
+			
 			String confirmarSenha = request.getParameter("confirmarSenha");
 			
 			if(!senha.equals(confirmarSenha)){
