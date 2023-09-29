@@ -16,7 +16,7 @@ public class CategoriaDAO {
 	public Categoria consultarPorId(Integer id) {
 		Categoria categoria = new Categoria();
 		
-		String SQL = "SELECT * FROM categorias WHERE id = ?";
+		String SQL = "SELECT * FROM categoria WHERE id = ?";
 		
 		Connection cnx = Dao.getConexao();
 
@@ -47,7 +47,7 @@ public class CategoriaDAO {
 
 		Connection cnx = Dao.getConexao();
 
-		String SQL = "INSERT INTO categoria(categorias, descricao, img_src) VALUES(?, ?, ?)";
+		String SQL = "INSERT INTO categoria(categoria, descricao, img_src) VALUES(?, ?, ?)";
 
 		PreparedStatement ps;
 
@@ -74,7 +74,7 @@ public class CategoriaDAO {
 
 		Connection cnx = Dao.getConexao();
 
-		String SQL = "UPDATE categoria SET categorias = ?, descricao = ?, img_src = ? WHERE id = ?";
+		String SQL = "UPDATE categoria SET categoria = ?, descricao = ?, img_src = ? WHERE id = ?";
 
 		PreparedStatement ps;
 
@@ -123,7 +123,7 @@ public class CategoriaDAO {
 		List<Categoria> listarCategoria = new ArrayList<Categoria>();
 		Categoria categoria;
 
-		String SQL = "SELECT * FROM categorias";
+		String SQL = "SELECT * FROM categoria";
 
 		Connection cnx = Dao.getConexao();
 

@@ -33,15 +33,14 @@
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Bairro </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Estado </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Rua </th>");
-		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Descriï¿½ï¿½o </th>");
-		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Polï¿½tica </th>");
+		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Descrição </th>");
+		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Política </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Min. Lot. </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Max. Lot. </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Status </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Min. Idade </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> ID da Categoria </th>");
-		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> ID do Admin </th>");
-		out.println("<th style='width: 10%; border-bottom: solid 1px'> Data do Evento </th>");
+		out.println("<th style='width: 10%; border-bottom: solid 1px'> ID do Admin </th>");
 
 	for(Evento evento: lista) {
 		out.println("<tr>");
@@ -78,9 +77,10 @@
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Email </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Senha </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Nome </th>");
+		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Username </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Data de Nasc. </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> CPF </th>");
-		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Endereï¿½o </th>");
+		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Endereço </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> CEP </th>");
 		out.println("<th style='width: 10%; border-bottom: solid 1px'> Admin? </th>");
 
@@ -90,6 +90,7 @@
 				out.println("<td>" + user.getEmail() + "</td>");
 				out.println("<td>" + user.getSenha() + "</td>");
 				out.println("<td>" + user.getNome() + "</td>");
+				out.println("<td>" + user.getUsername() + "</td>");
 				out.println("<td>" + user.getDtNascimento() + "</td>");
 				out.println("<td>" + user.getCpf() + "</td>");
 				out.println("<td>" + user.getEndereco() + "</td>");
@@ -111,7 +112,7 @@
 		out.println("<table style='margin-bottom: 2rem; border: solid 2px'>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> ID </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Status </th>");
-		out.println("<th style='width: 10%; border-bottom: solid 1px'> ID do Usuï¿½rio </th>");
+		out.println("<th style='width: 10%; border-bottom: solid 1px'> ID do Usuário </th>");
 
 		for(Admin admin: lista3) {
 			out.println("<tr>");
@@ -135,9 +136,9 @@
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> ID </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Valor </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Quantidade </th>");
-		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Descriï¿½ï¿½o </th>");
+		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> Descrição </th>");
 		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> QR Code </th>");
-		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> ID do Usuï¿½rio </th>");
+		out.println("<th style='width: 10%; border-right: solid 1px; border-bottom: solid 1px'> ID do Usuário </th>");
 		out.println("<th style='width: 10%; border-bottom: solid 1px'> ID do Evento </th>");
 
 		for(Ingresso ingresso: lista4) {

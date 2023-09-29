@@ -49,6 +49,25 @@ public class EventoResource {
 		return response;
 	}
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("listarRandom")
+	public Response getRandomEvento() {
+		EventoService service = new EventoService();
+		Evento evento = service.listarRandom();
+		
+		Response response = null;
+		
+		if(evento != null) {
+			response = Response.status(Response.Status.OK).entity(evento).build();
+		} else {
+			response = Response.status(Response.Status.NOT_FOUND).entity("A busca não retornou resultados válidos.").build();
+		}
+		
+		return response;
+	}
+	
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)

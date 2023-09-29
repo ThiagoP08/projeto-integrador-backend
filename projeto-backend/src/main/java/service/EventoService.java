@@ -16,6 +16,10 @@ public class EventoService {
 		return dao.consultarPorId(id);
 	}
 	
+	public Evento listarRandom() {
+		return dao.eventoRandom();
+	}
+	
 	public boolean excluirEvento(Integer id) {
 		return dao.excluir(id);
 	}

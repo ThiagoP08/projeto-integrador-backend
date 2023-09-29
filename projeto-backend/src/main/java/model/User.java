@@ -5,6 +5,7 @@ public class User {
 	private String email;
 	private String senha;
 	private String nome;
+	private String username;
 	private String dtNascimento;
 	private String cpf;
 	private String endereco;
@@ -81,5 +82,13 @@ public class User {
 	
 	public void setStatus_admin(Boolean status_admin) {
 		this.status_admin = status_admin;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

@@ -9,9 +9,44 @@ import java.util.List;
 
 import model.Evento;
 
-
-
 public class EventoDAO {
+	
+	public Evento eventoRandom() {
+		Evento evento = new Evento();
+		
+		String SQL = "SELECT * from evento ORDER BY RAND() LIMIT 1";
+		
+		Connection cnx = Dao.getConexao();
+		
+		try {
+			PreparedStatement ps = cnx.prepareStatement(SQL);
+			
+			ResultSet rs = ps.executeQuery();
+			
+	        while (rs.next()) {
+	            evento.setId(rs.getInt("id"));
+	            evento.setImg_src(rs.getString("img_src"));
+	            evento.setTitulo(rs.getString("titulo"));
+	            evento.setData_evento(rs.getString("data_evento"));
+	            evento.setHora(rs.getString("hora"));
+	            evento.setEstado(rs.getString("estado"));
+	            evento.setBairro(rs.getString("bairro"));
+	            evento.setRua(rs.getString("rua"));
+	            evento.setDescricao(rs.getString("descricao"));
+	            evento.setPolitica(rs.getString("politica"));
+	            evento.setMin_lotacao(rs.getInt("min_lotacao"));
+	            evento.setMax_lotacao(rs.getInt("max_lotacao"));
+	            evento.setStatus(rs.getBoolean("status"));
+	            evento.setMin_idade(rs.getInt("min_idade"));
+	            evento.setCategoria_id(rs.getInt("categoria_id"));
+	        }
+		} catch (SQLException e) {
+			System.out.println(e);
+		} finally {
+	        Dao.setFecharConexao();
+	        return evento;
+	    }
+	}
 	
 	public Evento consultarPorId(Integer id) {
 	    Evento evento = new Evento();
@@ -96,7 +131,7 @@ public class EventoDAO {
 
 	    Connection cnx = Dao.getConexao();
 
-	    String SQL = "UPDATE evento SET img_src = ?, titulo = ?, data_evento = ?, hora = ?, bairro = ?, estado = ?, rua = ?, descricao = ?, politica = ?, min_lotacao = ?, max_lotacao = ?, status = ?, min_idade = ?, categoria_id = ?, admin_id = ? WHERE id = ?";
+	    String SQL = "UPDATE evento SET img_src = ?, titulo = ?, data_evento = ?, hora = ?, bairro = ?, estado = ?, rua = ?, descricao = ?, politica = ?, min_lotacao = ?, max_lotacao = ?, status = ?, min_idade = ?, categoria_id = ? WHERE id = ?";
 
 	    PreparedStatement ps;
 
@@ -174,8 +209,8 @@ public class EventoDAO {
 		        evento.setTitulo(rs.getString("titulo"));
 		        evento.setData_evento(rs.getString("data_evento"));
 		        evento.setHora(rs.getString("hora"));
-		        evento.setBairro(rs.getString("bairro"));
 		        evento.setEstado(rs.getString("estado"));
+		        evento.setBairro(rs.getString("bairro"));
 		        evento.setRua(rs.getString("rua"));
 		        evento.setDescricao(rs.getString("descricao"));
 		        evento.setPolitica(rs.getString("politica"));

@@ -30,6 +30,7 @@ public class UserDAO {
 	            user.setEmail(rs.getString("email"));
 	            user.setSenha(rs.getString("senha"));
 	            user.setNome(rs.getString("nome"));
+	            user.setUsername(rs.getString("username"));
 	            user.setDtNascimento(rs.getString("dtNascimento"));
 	            user.setCpf(rs.getString("cpf"));
 	            user.setEndereco(rs.getString("endereco"));
@@ -49,7 +50,7 @@ public class UserDAO {
 		
 		Connection cnx = Dao.getConexao();
 		
-		String SQL = "INSERT INTO user(email, senha, nome, dtNascimento, cpf, endereco, cep, status_admin) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO user(email, senha, nome, username, dtNascimento, cpf, endereco, cep, status_admin) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		PreparedStatement ps;
 		
@@ -59,11 +60,12 @@ public class UserDAO {
 			ps.setString(1, user.getEmail());
 			ps.setString(2, user.getSenha());
 			ps.setString(3, user.getNome());
-			ps.setString(4, user.getDtNascimento());
-			ps.setString(5, user.getCpf());
-			ps.setString(6, user.getEndereco());
-            ps.setString(7, user.getCep());
-			ps.setBoolean(8, user.getStatus_admin());
+            ps.setString(4, user.getUsername());
+			ps.setString(5, user.getDtNascimento());
+			ps.setString(6, user.getCpf());
+			ps.setString(7, user.getEndereco());
+            ps.setString(8, user.getCep());
+			ps.setBoolean(9, user.getStatus_admin());
 			
 			
 			int i = ps.executeUpdate();
@@ -81,7 +83,7 @@ public class UserDAO {
 
 	    Connection cnx = Dao.getConexao();
 
-	    String SQL = "UPDATE user SET email = ?, nome = ?, dtNascimento = ?, endereco = ?, cep = ?, status_admin = ? WHERE id = ?";
+	    String SQL = "UPDATE user SET email = ?, nome = ?, username = ?, dtNascimento = ?, endereco = ?, cep = ?, status_admin = ? WHERE id = ?";
 
 	    PreparedStatement ps;
 
@@ -89,8 +91,8 @@ public class UserDAO {
 	        ps = cnx.prepareStatement(SQL);
 
 			ps.setString(1, user.getEmail());
-			ps.setString(2, user.getSenha());
-			ps.setString(3, user.getNome());
+			ps.setString(2, user.getNome());
+            ps.setString(3, user.getUsername());
 			ps.setString(4, user.getDtNascimento());
 			ps.setString(5, user.getCpf());
 			ps.setString(6, user.getEndereco());
@@ -153,6 +155,7 @@ public class UserDAO {
 	            user.setEmail(rs.getString("email"));
 	            user.setSenha(rs.getString("senha"));
 	            user.setNome(rs.getString("nome"));
+	            user.setUsername(rs.getString("username"));
 	            user.setDtNascimento(rs.getString("dtNascimento"));
 	            user.setCpf(rs.getString("cpf"));
 	            user.setEndereco(rs.getString("endereco"));
