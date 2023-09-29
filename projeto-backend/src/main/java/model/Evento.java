@@ -16,7 +16,6 @@ public class Evento {
 	private Boolean status;
 	private Integer min_idade;
 	private Integer categoria_id;
-	private Integer admin_id;
 	
 	public Integer getId() {
 		return id;
@@ -136,14 +135,6 @@ public class Evento {
 
 	public void setCategoria_id(Integer categoria_id) {
 		this.categoria_id = categoria_id;
-	}
-
-	public Integer getAdmin_id() {
-		return admin_id;
-	}
-
-	public void setAdmin_id(Integer admin_id) {
-		this.admin_id = admin_id;
 	}
 
 }

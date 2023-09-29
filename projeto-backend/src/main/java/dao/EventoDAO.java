@@ -59,7 +59,7 @@ public class EventoDAO {
 		
 		Connection cnx = Dao.getConexao();
 		
-		String SQL = "INSERT INTO evento(img_src, titulo, data_evento, hora, bairro, estado, rua, descricao, politica, min_lotacao, max_lotacao, status, min_idade, categoria_id, admin_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO evento(img_src, titulo, data_evento, hora, bairro, estado, rua, descricao, politica, min_lotacao, max_lotacao, status, min_idade, categoria_id) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		PreparedStatement ps;
 		

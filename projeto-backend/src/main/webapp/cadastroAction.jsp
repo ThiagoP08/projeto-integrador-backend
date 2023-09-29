@@ -22,9 +22,11 @@
 			
 			user.setNome(request.getParameter("nome"));
 			
+			user.setUsername(request.getParameter("username"));
+			
 			String senha = request.getParameter("senha");
 			
-			String confirmarSenha = request.getParameter("confirmarSenha");
+			String confirmarSenha = request.getParameter("confirmSenha");
 			
 			if(!senha.equals(confirmarSenha)){
 				out.print("As senhas não coincidem");
@@ -34,6 +36,7 @@
 			
 			user.setDtNascimento(request.getParameter("dtNascimento"));
 			user.setCpf(request.getParameter("cpf"));
+			user.setCep(request.getParameter("cep"));
 			user.setEndereco(request.getParameter("endereco"));
 			user.setStatus_admin(Boolean.parseBoolean(request.getParameter("status")));
 			
